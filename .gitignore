@@ -80,6 +80,7 @@ bower_components
 ################################################
 .tmp
 dump.rdb
+www/
 
 
 
@@ -97,7 +98,8 @@ lib-cov
 *.out
 *.pid
 npm-debug.log
-
+.node_history
+yarn-error.log
 
 
 
@@ -115,5 +117,3 @@ npm-debug.log
 .netbeans
 nbproject
 .idea
-www/
-.node_history
