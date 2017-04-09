@@ -18,7 +18,7 @@ module.exports = function forbidden (data, options) {
   var req = this.req;
   var res = this.res;
   var sails = req._sails;
-
+  return res.json(403, { error: 'Error.Response.Status.Forbidden' });
   // Set status code
   res.status(403);
 

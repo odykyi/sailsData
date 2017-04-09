@@ -140,7 +140,7 @@ const AuthController = {
           error: flashError,
         });
       }
-      return res.redirect('/login');
+      // res.redirect('/login');
       // req.flash('form', req.body);
       //
       // // If an error was thrown, redirect the user to the
@@ -175,7 +175,23 @@ const AuthController = {
 
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
-        res.redirect('/');
+        // res.redirect('/');
+        const userID = user.id;
+
+        Passport.findOne({ user: userID }, (err, userData) => {
+          if (err) {
+            return res.json(400, {
+              error: err,
+            });
+          }
+          console.log(userData);
+          // Make sure you dont give them any sensetive data
+          res.json({
+            user: userData,
+            token: userData.accessToken,
+          });
+        });
+
       });
     });
   },
