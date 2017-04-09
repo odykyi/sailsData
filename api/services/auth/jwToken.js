@@ -6,18 +6,16 @@
  */
 
 const jwt = require('jsonwebtoken');
-const tokenSecret = "secretissecet";
+const tokenSecret = 'secretissecettoken';
 
 // Generates a token from supplied payload
 function issue(payload) {
+  // console.log
+  // payload.exp = 180;
   return jwt.sign(
     payload,
-    tokenSecret, // Token Secret that we sign it with
-    {
-      expiresInMinutes : 180 // Token Expire time
-    }
-  );
-};
+    tokenSecret);
+}
 
 // Verifies token on a request
 function verify(token, callback) {
@@ -25,13 +23,10 @@ function verify(token, callback) {
     token, // The token to be verified
     tokenSecret, // Same token we used to sign
     {}, // No Option, for more see https://github.com/auth0/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback
-    callback //Pass errors or decoded token to callback
-  );
-};
-
-
-
+    callback);
+}
 
 module.exports = {
+  issue,
   verify,
-}
+};

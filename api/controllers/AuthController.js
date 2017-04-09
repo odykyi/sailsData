@@ -11,11 +11,11 @@ const AuthController = {
    *
    * The login form itself is just a simple HTML form:
    *
-      <form role="form" action="/auth/local" method="post">
-        <input type="text" name="identifier" placeholder="Username or Email">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Sign in</button>
-      </form>
+   <form role="form" action="/auth/local" method="post">
+   <input type="text" name="identifier" placeholder="Username or Email">
+   <input type="password" name="password" placeholder="Password">
+   <button type="submit">Sign in</button>
+   </form>
    *
    * You could optionally add CSRF-protection as outlined in the documentation:
    * http://sailsjs.org/#!documentation/config.csrf
@@ -23,9 +23,9 @@ const AuthController = {
    * A simple example of automatically listing all available providers in a
    * Handlebars template would look like this:
    *
-      {{#each providers}}
-        <a href="/auth/{{slug}}" role="button">{{name}}</a>
-      {{/each}}
+   {{#each providers}}
+   <a href="/auth/{{slug}}" role="button">{{name}}</a>
+   {{/each}}
    *
    * @param {Object} req
    * @param {Object} res
@@ -81,12 +81,12 @@ const AuthController = {
    *
    * Just like the login form, the registration form is just simple HTML:
    *
-      <form role="form" action="/auth/local/register" method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Sign up</button>
-      </form>
+   <form role="form" action="/auth/local/register" method="post">
+   <input type="text" name="username" placeholder="Username">
+   <input type="text" name="email" placeholder="Email">
+   <input type="password" name="password" placeholder="Password">
+   <button type="submit">Sign up</button>
+   </form>
    *
    * @param {Object} req
    * @param {Object} res
@@ -104,7 +104,7 @@ const AuthController = {
    * @param {Object} res
    */
   provider: function (req, res) {
-    passport.endpoint(req, res);
+    auth.passport.endpoint(req, res);
   },
 
   /**
@@ -160,7 +160,7 @@ const AuthController = {
       // }
     }
 
-    passport.callback(req, res, function (err, user, challenges, statuses) {
+    auth.passport.callback(req, res, function (err, user, challenges, statuses) {
       if (err || !user) {
         return tryAgain(challenges);
       }
@@ -185,11 +185,16 @@ const AuthController = {
             });
           }
           console.log(userData);
-          // Make sure you dont give them any sensetive data
-          res.json({
+
+          res.json(200, {
             user: userData,
-            token: userData.accessToken,
+            token: auth.jwToken.issue({
+              id: userData.id,
+            }),
           });
+
+
+          // Make sure you dont give them any sensetive data ex. password
         });
 
       });
@@ -203,7 +208,7 @@ const AuthController = {
    * @param {Object} res
    */
   disconnect: function (req, res) {
-    passport.disconnect(req, res);
+    auth.passport.disconnect(req, res);
   }
 };
 
