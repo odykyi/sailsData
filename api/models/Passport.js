@@ -1,4 +1,4 @@
-var bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 /**
  * Hash a passport password.
@@ -31,7 +31,7 @@ function hashPassword (passport, next) {
  * weight as possible as the application only needs to serialize and deserialize
  * the user, but not the authentication data, to and from the session.
  */
-var Passport = {
+const Passport = {
   attributes: {
     // Required field: Protocol
     //
@@ -46,8 +46,8 @@ var Passport = {
     // When the local strategy is employed, a password will be used as the
     // means of authentication along with either a username or an email.
     //
-    // accessToken is used to authenticate API requests. it is generated when a 
-    // passport (with protocol 'local') is created for a user. 
+    // accessToken is used to authenticate API requests. it is generated when a
+    // passport (with protocol 'local') is created for a user.
     password    : { type: 'string', minLength: 8 },
     accessToken : { type: 'string' },
 
@@ -62,9 +62,9 @@ var Passport = {
     // dards. When using OAuth 1.0, a `token` as well as a `tokenSecret` will
     // be issued by the provider. In the case of OAuth 2.0, an `accessToken`
     // and a `refreshToken` will be issued.
-    provider   : { type: 'alphanumericdashed' },
-    identifier : { type: 'string' },
-    tokens     : { type: 'json' },
+    provider: { type: 'alphanumericdashed' },
+    identifier: { type: 'string' },
+    tokens: { type: 'json' },
 
     // Associations
     //
@@ -83,7 +83,7 @@ var Passport = {
      */
     validatePassword: function (password, next) {
       bcrypt.compare(password, this.password, next);
-    }
+    },
 
   },
 

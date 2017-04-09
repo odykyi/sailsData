@@ -25,8 +25,20 @@
  *  http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.cors.html
  *
  */
-
+// module.exports.cors = {
+//   allRoutes: true,
+//   origin: require('./local').hosts, // this is 'http://localhost',
+//   securityLevel: 1,
+// };
 module.exports.cors = {
+  allRoutes: true,
+  // origin: '*',
+  origin: require('./local').hosts + ':8080', // this is 'http://localhost',
+  credentials: true,
+  methods: 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+  headers: 'content-type',
+};
+// module.exports.cors = {
 
   /***************************************************************************
   *                                                                          *
@@ -75,4 +87,4 @@ module.exports.cors = {
 
   // headers: 'content-type'
 
-};
+// };
