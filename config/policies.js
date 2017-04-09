@@ -15,10 +15,11 @@
  * For more information on configuring policies, check out:
  * http://sailsjs.org/#!/documentation/reference/sails.config/sails.config.policies.html
  */
-var passport = require('passport');
+const passport = require('passport');
 
 
 module.exports.policies = {
+
 
   /***************************************************************************
   *                                                                          *
@@ -26,14 +27,12 @@ module.exports.policies = {
   * access)                                                                  *
   *                                                                          *
   ***************************************************************************/
+  '*': ['passport', 'sessionAuth'],
 
-  '*': [
-    // Initialize Passport
-    passport.initialize(),
+  'auth': {
+    '*': ['passport']
+  }  //
 
-    // Use Passport's built-in sessions
-    passport.session()
-  ]
 
   /***************************************************************************
   *                                                                          *

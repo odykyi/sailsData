@@ -31,8 +31,8 @@ const AuthController = {
    * @param {Object} res
    */
   login: function (req, res) {
-    var strategies = sails.config.passport
-      , providers  = {};
+    const strategies = sails.config.passport;
+    const providers = {};
 
     // Get a list of available providers for use in your templates.
     Object.keys(strategies).forEach(function (key) {
@@ -41,15 +41,15 @@ const AuthController = {
       }
 
       providers[key] = {
-        name: strategies[key].name
-      , slug: key
+        name: strategies[key].name,
+        slug: key,
       };
     });
 
     // Render the `auth/login.ext` view
     res.view({
-      providers : providers
-    , errors    : req.flash('error')
+      providers,
+      errors: req.flash('error'),
     });
   },
 
@@ -93,7 +93,7 @@ const AuthController = {
    */
   register: function (req, res) {
     res.view({
-      errors: req.flash('error')
+      errors: req.flash('error'),
     });
   },
 
@@ -129,30 +129,35 @@ const AuthController = {
       // Only certain error messages are returned via req.flash('error', someError)
       // because we shouldn't expose internal authorization errors to the user.
       // We do return a generic error and the original request body.
-      var flashError = req.flash('error')[0];
+      const flashError = req.flash('error')[0];
 
-      if (err && !flashError ) {
-        req.flash('error', 'Error.Passport.Generic');
+      if (err && !flashError) {
+        return res.json(400, {
+          error: 'Error.Passport.Generic',
+        });
       } else if (flashError) {
-        req.flash('error', flashError);
+        return res.json(400, {
+          error: flashError,
+        });
       }
-      req.flash('form', req.body);
-
-      // If an error was thrown, redirect the user to the
-      // login, register or disconnect action initiator view.
-      // These views should take care of rendering the error messages.
-      var action = req.param('action');
-
-      switch (action) {
-        case 'register':
-          res.redirect('/register');
-          break;
-        case 'disconnect':
-          res.redirect('back');
-          break;
-        default:
-          res.redirect('/login');
-      }
+      return res.redirect('/login');
+      // req.flash('form', req.body);
+      //
+      // // If an error was thrown, redirect the user to the
+      // // login, register or disconnect action initiator view.
+      // // These views should take care of rendering the error messages.
+      // var action = req.param('action');
+      //
+      // switch (action) {
+      //   case 'register':
+      //     res.redirect('/register');
+      //     break;
+      //   case 'disconnect':
+      //     res.redirect('back');
+      //     break;
+      //   default:
+      //     res.redirect('/login');
+      // }
     }
 
     passport.callback(req, res, function (err, user, challenges, statuses) {
@@ -166,7 +171,7 @@ const AuthController = {
         }
 
         // Mark the session as authenticated to work with default Sails sessionAuth.js policy
-        req.session.authenticated = true
+        req.session.authenticated = true;
 
         // Upon successful login, send the user to the homepage were req.user
         // will be available.

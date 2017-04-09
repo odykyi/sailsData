@@ -48,8 +48,8 @@ const Passport = {
     //
     // accessToken is used to authenticate API requests. it is generated when a
     // passport (with protocol 'local') is created for a user.
-    password    : { type: 'string', minLength: 8 },
-    accessToken : { type: 'string' },
+    password: { type: 'string', minLength: 8 },
+    accessToken: { type: 'string' },
 
     // Provider fields: Provider, identifer and tokens
     //
