@@ -54,6 +54,7 @@
   },
   "scripts": {
     "debug": "node debug app.js",
+    "server": "nodemon app.js",
     "start": "sails lift --prod",
     "heroku-prebuild": "set NODE_ENV=production"
   },

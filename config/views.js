@@ -13,7 +13,7 @@
 
 module.exports.views = {
 
-  /****************************************************************************
+  /** **************************************************************************
   *                                                                           *
   * View engine (aka template language) to use for your app's *server-side*   *
   * views                                                                     *
@@ -33,7 +33,7 @@ module.exports.views = {
   engine: 'ejs',
 
 
-  /****************************************************************************
+  /** **************************************************************************
   *                                                                           *
   * Layouts are simply top-level HTML templates you can use as wrappers for   *
   * your server-side views. If you're using ejs or jade, you can take         *
@@ -58,7 +58,7 @@ module.exports.views = {
   ****************************************************************************/
 
 
-  /****************************************************************************
+  /** **************************************************************************
   *                                                                           *
   * Using Multiple Layouts                                                    *
   *                                                                           *
@@ -78,7 +78,7 @@ module.exports.views = {
 
   layout: 'layout',
 
-  /****************************************************************************
+  /** **************************************************************************
   *                                                                           *
   * Partials are simply top-level snippets you can leverage to reuse template *
   * for your server-side views. If you're using handlebars, you can take      *
@@ -90,7 +90,7 @@ module.exports.views = {
   *                                                                           *
   ****************************************************************************/
 
-  partials: false
+  partials: false,
 
 
 };

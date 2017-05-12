@@ -20,7 +20,7 @@ module.exports = function (req, res, next) {
         token = credentials;
       }
     } else {
-      return res.json(401, { error: 'Format is Authorization: Bearer [token]'} );
+      return res.json(401, { error: 'Format is Authorization: Bearer [token]' });
     }
   } else if (req.param('token')) {
     token = req.param('token');
@@ -30,7 +30,7 @@ module.exports = function (req, res, next) {
     return res.json(401, { error: 'No Authorization header was found' });
   }
 
-  auth.jwToken.verify(token, function (err, token) {
+  auth.jwToken.verify(token, (err, token) => {
     if (err) {
       return res.json(401, {
         error: 'Invalid Token!',

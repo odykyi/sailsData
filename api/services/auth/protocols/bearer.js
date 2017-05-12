@@ -8,16 +8,14 @@
  *
  */
 
-exports.authorize = function(token, done) {
-  
-  Passport.findOne({ accessToken: token }, function(err, passport) {
+exports.authorize = function (token, done) {
+  Passport.findOne({ accessToken: token }, (err, passport) => {
     if (err) { return done(err); }
     if (!passport) { return done(null, false); }
-    User.findOneById(passport.user, function(err, user) {
+    User.findOneById(passport.user, (err, user) => {
       if (err) { return done(err); }
       if (!user) { return done(null, false); }
       return done(null, user, { scope: 'all' });
     });
   });
-  
 };

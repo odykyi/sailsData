@@ -30,12 +30,12 @@ const AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  login: function (req, res) {
+  login(req, res) {
     const strategies = sails.config.passport;
     const providers = {};
 
     // Get a list of available providers for use in your templates.
-    Object.keys(strategies).forEach(function (key) {
+    Object.keys(strategies).forEach((key) => {
       if (key === 'local') {
         return;
       }
@@ -67,7 +67,7 @@ const AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  logout: function (req, res) {
+  logout(req, res) {
     req.logout();
 
     // mark the user as logged out for auth purposes
@@ -91,7 +91,7 @@ const AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  register: function (req, res) {
+  register(req, res) {
     res.view({
       errors: req.flash('error'),
     });
@@ -103,7 +103,7 @@ const AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  provider: function (req, res) {
+  provider(req, res) {
     auth.passport.endpoint(req, res);
   },
 
@@ -123,9 +123,8 @@ const AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  callback: function (req, res) {
-    function tryAgain (err) {
-
+  callback(req, res) {
+    function tryAgain(err) {
       // Only certain error messages are returned via req.flash('error', someError)
       // because we shouldn't expose internal authorization errors to the user.
       // We do return a generic error and the original request body.
@@ -160,12 +159,12 @@ const AuthController = {
       // }
     }
 
-    auth.passport.callback(req, res, function (err, user, challenges, statuses) {
+    auth.passport.callback(req, res, (err, user, challenges, statuses) => {
       if (err || !user) {
         return tryAgain(challenges);
       }
 
-      req.login(user, function (err) {
+      req.login(user, (err) => {
         if (err) {
           return tryAgain(err);
         }
@@ -196,7 +195,6 @@ const AuthController = {
 
           // Make sure you dont give them any sensetive data ex. password
         });
-
       });
     });
   },
@@ -207,9 +205,9 @@ const AuthController = {
    * @param {Object} req
    * @param {Object} res
    */
-  disconnect: function (req, res) {
+  disconnect(req, res) {
     auth.passport.disconnect(req, res);
-  }
+  },
 };
 
 module.exports = AuthController;

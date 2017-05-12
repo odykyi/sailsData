@@ -23,9 +23,9 @@
  */
 module.exports = function (req, res, next) {
   // Initialize Passport
-  auth.passport.initialize()(req, res, function () {
+  auth.passport.initialize()(req, res, () => {
     // Use the built-in sessions
-    auth.passport.session()(req, res, function () {
+    auth.passport.session()(req, res, () => {
       // Make the user available throughout the frontend
       res.locals.user = req.user;
 

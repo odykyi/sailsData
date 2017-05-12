@@ -11,7 +11,7 @@
 
 module.exports.http = {
 
-  /****************************************************************************
+  /** **************************************************************************
    *                                                                           *
    * Express middleware to use for every Sails request. To add custom          *
    * middleware to the mix, add a function to the middleware config object and *
@@ -23,7 +23,7 @@ module.exports.http = {
 
   middleware: {
 
-    /***************************************************************************
+    /** *************************************************************************
      *                                                                          *
      * The order in which middleware should be run for HTTP request. (the Sails *
      * router is invoked by the "router" middleware below.)                     *
@@ -48,7 +48,7 @@ module.exports.http = {
     //   '500'
     // ],
 
-    /****************************************************************************
+    /** **************************************************************************
      *                                                                           *
      * Example custom middleware; logs each request to the console.              *
      *                                                                           *
@@ -60,7 +60,7 @@ module.exports.http = {
     // }
 
 
-    /***************************************************************************
+    /** *************************************************************************
      *                                                                          *
      * The body parser that will handle incoming multipart HTTP requests. By    *
      * default as of v0.10, Sails uses                                          *

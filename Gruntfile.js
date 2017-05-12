@@ -12,12 +12,10 @@
  * Check out the `tasks` directory instead.
  */
 
-module.exports = function(grunt) {
-
-
+module.exports = function (grunt) {
   // Load the include-all library in order to require all of our grunt
   // configurations and task registrations dynamically.
-  var includeAll;
+  let includeAll;
 
   try {
     includeAll = require('include-all');
@@ -47,7 +45,7 @@ module.exports = function(grunt) {
     return includeAll({
       dirname: require('path').resolve(__dirname, relPath),
       filter: /(.+)\.js$/,
-      excludeDirs: /^\.(git|svn)$/
+      excludeDirs: /^\.(git|svn)$/,
     }) || {};
   }
 
@@ -56,7 +54,7 @@ module.exports = function(grunt) {
    * a single argument - the `grunt` object.
    */
   function invokeConfigFn(tasks) {
-    for (var taskName in tasks) {
+    for (const taskName in tasks) {
       if (tasks.hasOwnProperty(taskName)) {
         tasks[taskName](grunt);
       }
@@ -64,14 +62,13 @@ module.exports = function(grunt) {
   }
 
 
-
   // Load task functions
-  var taskConfigurations = loadTasks('./tasks/config'),
+  let taskConfigurations = loadTasks('./tasks/config'),
     registerDefinitions = loadTasks('./tasks/register');
 
   // (ensure that a default task exists)
   if (!registerDefinitions.default) {
-    registerDefinitions.default = function(grunt) {
+    registerDefinitions.default = function (grunt) {
       grunt.registerTask('default', []);
     };
   }
@@ -79,5 +76,4 @@ module.exports = function(grunt) {
   // Run task functions to configure Grunt.
   invokeConfigFn(taskConfigurations);
   invokeConfigFn(registerDefinitions);
-
 };

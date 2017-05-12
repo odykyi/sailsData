@@ -10,7 +10,7 @@
  */
 module.exports.globals = {
 
-  /****************************************************************************
+  /** **************************************************************************
   *                                                                           *
   * Expose the lodash installed in Sails core as a global variable. If this   *
   * is disabled, like any other node module you can always run npm install    *
@@ -20,7 +20,7 @@ module.exports.globals = {
 
 	// _: true,
 
-  /****************************************************************************
+  /** **************************************************************************
   *                                                                           *
   * Expose the async installed in Sails core as a global variable. If this is *
   * disabled, like any other node module you can always run npm install async *
@@ -30,7 +30,7 @@ module.exports.globals = {
 
 	// async: true,
 
-  /****************************************************************************
+  /** **************************************************************************
   *                                                                           *
   * Expose the sails instance representing your app. If this is disabled, you *
   * can still get access via req._sails.                                      *
@@ -39,7 +39,7 @@ module.exports.globals = {
 
 	// sails: true,
 
-  /****************************************************************************
+  /** **************************************************************************
   *                                                                           *
   * Expose each of your app's services as global variables (using their       *
   * "globalId"). E.g. a service defined in api/models/NaturalLanguage.js      *
@@ -50,7 +50,7 @@ module.exports.globals = {
 
 	// services: true,
 
-  /****************************************************************************
+  /** **************************************************************************
   *                                                                           *
   * Expose each of your app's models as global variables (using their         *
   * "globalId"). E.g. a model defined in api/models/User.js would have a      *

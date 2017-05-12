@@ -25,7 +25,7 @@
 
 module.exports.blueprints = {
 
-  /***************************************************************************
+  /** *************************************************************************
    *                                                                          *
    * Action routes speed up the backend development workflow by               *
    * eliminating the need to manually bind routes. When enabled, GET, POST,   *
@@ -46,7 +46,7 @@ module.exports.blueprints = {
 
   // actions: true,
 
-  /***************************************************************************
+  /** *************************************************************************
    *                                                                          *
    * RESTful routes (`sails.config.blueprints.rest`)                          *
    *                                                                          *
@@ -71,7 +71,7 @@ module.exports.blueprints = {
 
   // rest: true,
 
-  /***************************************************************************
+  /** *************************************************************************
    *                                                                          *
    * Shortcut routes are simple helpers to provide access to a                *
    * controller's CRUD methods from your browser's URL bar. When enabled,     *
@@ -85,7 +85,7 @@ module.exports.blueprints = {
 
   // shortcuts: true,
 
-  /***************************************************************************
+  /** *************************************************************************
    *                                                                          *
    * An optional mount path for all blueprint routes on a controller,         *
    * including `rest`, `actions`, and `shortcuts`. This allows you to take    *
@@ -99,7 +99,7 @@ module.exports.blueprints = {
 
   // prefix: '',
 
-  /***************************************************************************
+  /** *************************************************************************
    *                                                                          *
    * An optional mount path for all REST blueprint routes on a controller.    *
    * And it do not include `actions` and `shortcuts` routes.                  *
@@ -110,7 +110,7 @@ module.exports.blueprints = {
 
   // restPrefix: '',
 
-  /***************************************************************************
+  /** *************************************************************************
    *                                                                          *
    * Whether to pluralize controller names in blueprint routes.               *
    *                                                                          *
@@ -128,7 +128,7 @@ module.exports.blueprints = {
 
   pluralize: true,
 
-  /***************************************************************************
+  /** *************************************************************************
    *                                                                          *
    * Whether the blueprint controllers should populate model fetches with     *
    * data from other models which are linked by associations                  *
@@ -140,7 +140,7 @@ module.exports.blueprints = {
 
   populate: true,
 
-  /****************************************************************************
+  /** **************************************************************************
    *                                                                           *
    * Whether to run Model.watch() in the find and findOne blueprint actions.   *
    * Can be overridden on a per-model basis.                                   *
@@ -149,7 +149,7 @@ module.exports.blueprints = {
 
   // autoWatch: true,
 
-  /****************************************************************************
+  /** **************************************************************************
    *                                                                           *
    * The default number of records to show in the response from a "find"       *
    * action. Doubles as the default size of populated arrays if populate is    *
@@ -157,6 +157,6 @@ module.exports.blueprints = {
    *                                                                           *
    ****************************************************************************/
 
-  defaultLimit: 15
+  defaultLimit: 15,
 
 };

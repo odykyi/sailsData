@@ -13,7 +13,7 @@
 module.exports.sockets = {
 
 
-  /***************************************************************************
+  /** *************************************************************************
   *                                                                          *
   * Node.js (and consequently Sails.js) apps scale horizontally. It's a      *
   * powerful, efficient approach, but it involves a tiny bit of planning. At *
@@ -51,8 +51,7 @@ module.exports.sockets = {
   // pass: '<redis auth password>',
 
 
-
- /***************************************************************************
+ /** *************************************************************************
   *                                                                          *
   * Whether to expose a 'get /__getcookie' route with CORS support that sets *
   * a cookie (this is used by the sails.io.js socket client to get access to *
@@ -68,8 +67,7 @@ module.exports.sockets = {
   // grant3rdPartyCookie: true,
 
 
-
-  /***************************************************************************
+  /** *************************************************************************
   *                                                                          *
   * `beforeConnect`                                                          *
   *                                                                          *
@@ -114,7 +112,7 @@ module.exports.sockets = {
   // },
 
 
-  /***************************************************************************
+  /** *************************************************************************
   *                                                                          *
   * `afterDisconnect`                                                        *
   *                                                                          *
@@ -127,7 +125,7 @@ module.exports.sockets = {
   //   return cb();
   // },
 
-  /***************************************************************************
+  /** *************************************************************************
   *                                                                          *
   * `transports`                                                             *
   *                                                                          *

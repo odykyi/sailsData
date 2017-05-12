@@ -44,9 +44,9 @@ exports.register = function (req, res, next) {
   }
 
   User.create({
-    username : username
-    , email    : email
-  }, function (err, user) {
+    username,
+    email,
+  }, (err, user) => {
     if (err) {
       if (err.code === 'E_VALIDATION') {
         if (err.invalidAttributes.email) {
@@ -60,20 +60,20 @@ exports.register = function (req, res, next) {
     }
 
     // Generating accessToken for API authentication
-    var token = crypto.randomBytes(48).toString('base64');
+    const token = crypto.randomBytes(48).toString('base64');
 
     Passport.create({
-      protocol    : 'local'
-      , password    : password
-      , user        : user.id
-      , accessToken : token
-    }, function (err, passport) {
+      protocol: 'local',
+      password,
+      user: user.id,
+      accessToken: token,
+    }, (err, passport) => {
       if (err) {
         if (err.code === 'E_VALIDATION') {
           req.flash('error', 'Error.Passport.Password.Invalid');
         }
 
-        return user.destroy(function (destroyErr) {
+        return user.destroy((destroyErr) => {
           next(destroyErr || err);
         });
       }
@@ -95,27 +95,26 @@ exports.register = function (req, res, next) {
  * @param {Function} next
  */
 exports.connect = function (req, res, next) {
-  var user     = req.user
-    , password = req.param('password');
+  let user = req.user,
+    password = req.param('password');
 
   Passport.findOne({
-    protocol : 'local'
-    , user     : user.id
-  }, function (err, passport) {
+    protocol: 'local',
+    user: user.id,
+  }, (err, passport) => {
     if (err) {
       return next(err);
     }
 
     if (!passport) {
       Passport.create({
-        protocol : 'local'
-        , password : password
-        , user     : user.id
-      }, function (err, passport) {
+        protocol: 'local',
+        password,
+        user: user.id,
+      }, (err, passport) => {
         next(err, user);
       });
-    }
-    else {
+    } else {
       next(null, user);
     }
   });
@@ -134,17 +133,16 @@ exports.connect = function (req, res, next) {
  * @param {Function} next
  */
 exports.login = function (req, identifier, password, next) {
-  var isEmail = validator.isEmail(identifier)
-    , query   = {};
+  let isEmail = validator.isEmail(identifier),
+    query = {};
 
   if (isEmail) {
     query.email = identifier;
-  }
-  else {
+  } else {
     query.username = identifier;
   }
 
-  User.findOne(query, function (err, user) {
+  User.findOne(query, (err, user) => {
     if (err) {
       return next(err);
     }
@@ -166,9 +164,9 @@ exports.login = function (req, identifier, password, next) {
     Passport.findOne({
       protocol: 'local',
       user: user.id,
-    }, function (err, passport) {
+    }, (err, passport) => {
       if (passport) {
-        passport.validatePassword(password, function (err, res) {
+        passport.validatePassword(password, (err, res) => {
           if (err) {
             return next(err);
           }
@@ -176,12 +174,10 @@ exports.login = function (req, identifier, password, next) {
           if (!res) {
             req.flash('error', 'Error.Passport.Password.Wrong');
             return next(null, false);
-          } else {
-            return next(null, user);
           }
+          return next(null, user);
         });
-      }
-      else {
+      } else {
         req.flash('error', 'Error.Passport.Password.NotSet');
         return next(null, false);
       }

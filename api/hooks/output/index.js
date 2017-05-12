@@ -1,5 +1,4 @@
-module.exports = function(sails) {
-
+module.exports = function (sails) {
   // This var will be private
   // var foo = 'bar';
 
@@ -12,7 +11,7 @@ module.exports = function(sails) {
     // ready: false,
 
     // set up the options of your hook
-    defaults:{
+    defaults: {
     },
 
     // // do stuff before intialize the hook
@@ -21,7 +20,7 @@ module.exports = function(sails) {
     // },
 
     // the logic of your hook
-    initialize: function(done){
+    initialize(done) {
       console.log('Sails load hooks', this);
       // This will be available in app code as sails.hooks.myhook.numRequestsSeen
       this.numRequestsSeen = 0;
@@ -36,16 +35,16 @@ module.exports = function(sails) {
         'GET /*': function (req, res, next) {
           this.numRequestsSeen++;
           return next();
-        }
+        },
       },
       after: {
         // This route will be matched after any routes in config/routes.js
         'GET /*': function (req, res, next) {
           this.numUnhandledRequestsSeen++;
           return next();
-        }
-      }
-    }
+        },
+      },
+    },
 
   };
 };

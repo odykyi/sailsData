@@ -29,8 +29,8 @@ module.exports.passport = {
     strategy: require('passport-twitter').Strategy,
     options: {
       consumerKey: 'your-consumer-key',
-      consumerSecret: 'your-consumer-secret'
-    }
+      consumerSecret: 'your-consumer-secret',
+    },
   },
 
   github: {
@@ -39,8 +39,8 @@ module.exports.passport = {
     strategy: require('passport-github').Strategy,
     options: {
       clientID: 'your-client-id',
-      clientSecret: 'your-client-secret'
-    }
+      clientSecret: 'your-client-secret',
+    },
   },
 
   facebook: {
@@ -52,7 +52,7 @@ module.exports.passport = {
       clientID: '1374320415928593',
       clientSecret: '564eadc96d7c477df309c438d9720064',
       scope: ['email'] /* email is necessary for login behavior */,
-    }
+    },
   },
 
   google: {
@@ -61,8 +61,8 @@ module.exports.passport = {
     strategy: require('passport-google-oauth').OAuth2Strategy,
     options: {
       clientID: 'your-client-id',
-      clientSecret: 'your-client-secret'
-    }
+      clientSecret: 'your-client-secret',
+    },
   },
 
   cas: {
@@ -72,7 +72,7 @@ module.exports.passport = {
     options: {
       ssoBaseURL: 'http://your-cas-url',
       serverBaseURL: 'http://localhost:1337',
-      serviceURL: 'http://localhost:1337/auth/cas/callback'
-    }
-  }
+      serviceURL: 'http://localhost:1337/auth/cas/callback',
+    },
+  },
 };

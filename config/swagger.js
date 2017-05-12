@@ -19,8 +19,8 @@ module.exports.swagger = {
    */
   pkg: require('../package'),
   ui: {
-    url: 'http://swagger.balderdash.io'
-  }
+    url: 'http://swagger.balderdash.io',
+  },
 };
 // module.exports.swagger = {
 //   /**
