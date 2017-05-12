@@ -50,7 +50,8 @@
     "socket.io-redis": "^4.0.0",
     "swagger-tools": "^0.10.1",
     "uglify-js": "^2.8.21",
-    "validator": "^7.0.0"
+    "validator": "^7.0.0",
+    "waterline": "^0.13.0-rc9"
   },
   "scripts": {
     "debug": "node debug app.js",

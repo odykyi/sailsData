@@ -11,7 +11,8 @@
 
 module.exports.bootstrap = function (cb) {
   // It's very important to trigger this callback method when you are finished
-  // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+  // with the bootstrap!  (otherwise your server will never lift,
+  // since it's waiting on the bootstrap)
   console.log('Init Sails Services', Object.keys(sails.services));
   sails.services.auth.passport.loadStrategies();
   cb();
